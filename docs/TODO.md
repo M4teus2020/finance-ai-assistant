@@ -7,9 +7,9 @@ Toda sessão começa aqui. Uma sessão = um bloco. Marca, commit, push.
 ### Qui 26/11: primeira API
 - [x] Repo público no GitHub + clone
 - [x] `uv init` + `uv add fastapi uvicorn`
-- [ ] Escrever você mesmo `src/finance_ai_assistant/main.py`: `app = FastAPI()` + `GET /health` devolvendo `{"status": "ok"}`
-- [ ] Rodar: `uv run uvicorn finance_ai_assistant.main:app --reload`
-- [ ] Abrir http://localhost:8000/health e http://localhost:8000/docs
+- [x] Escrever você mesmo `src/finance_ai_assistant/main.py`: `app = FastAPI()` + `GET /health` devolvendo `{"status": "ok"}`
+- [x] Rodar: `uv run uvicorn finance_ai_assistant.main:app --reload`
+- [x] Abrir http://localhost:8000/health e http://localhost:8000/docs
 - [ ] Explicar em 1 min: o que é o FastAPI e de onde sai o `/docs`
 - [ ] Commit `feat: health endpoint` + push
 - Estudo: `docs/study/01-python-uv-fastapi.md`
