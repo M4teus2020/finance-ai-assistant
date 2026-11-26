@@ -2,6 +2,15 @@
 
 **Objetivo:** o LLM decide chamar `get_balance(account_id)`, o seu código executa e o LLM responde com o resultado.
 
+## Checklist
+- [ ] `tools/balance.py`: `get_balance(account_id: str) -> Decimal` sobre os dados fake
+- [ ] Schema da tool (tentar gerar a partir de um model Pydantic)
+- [ ] `POST /chat` trata o loop de tool calling; perguntar "qual o saldo da conta X?"
+- [ ] Explicar em 1 min (perguntas abaixo)
+- [ ] Minhas anotações
+- [ ] Commit + push
+- Dia ruim: assinatura da tool + docstring
+
 ## Conceitos-chave
 - Você manda `tools=[{name, description, parameters (JSON Schema)}]`. O modelo **não executa nada**: ele devolve um `tool_call` com nome + argumentos.
 - **O loop:** mensagem do usuário -> modelo devolve tool_call -> você roda a função -> adiciona `{"role": "tool", ...}` -> chama o modelo de novo -> resposta final.
@@ -12,11 +21,6 @@
 
 ## Ponte com o que você já faz
 O Brain já faz isso via MCP. Aqui você escreve o loop na mão, para entender o que o MCP e os frameworks de agente escondem.
-
-## Exercício
-1. `tools/balance.py`: `get_balance(account_id: str) -> Decimal` sobre os dados fake.
-2. Schema da tool (tente gerar a partir de um model Pydantic).
-3. `POST /chat` trata o loop. Pergunte "qual o saldo da conta X?".
 
 ## Responder em voz alta
 - Quem executa a tool, o modelo ou o seu código?

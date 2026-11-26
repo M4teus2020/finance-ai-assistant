@@ -2,6 +2,16 @@
 
 **Objetivo:** testes para a tool, para o parser do structured output e para uma falha do LLM, sem chamar o LLM de verdade.
 
+## Checklist
+- [ ] `uv add --dev pytest`
+- [ ] `tests/test_balance.py`: conta conhecida devolve saldo conhecido; conta desconhecida levanta erro
+- [ ] `tests/test_classify.py`: LLM fake com JSON válido -> parse ok; JSON inválido -> erro claro
+- [ ] `tests/test_chat.py`: LLM dá timeout -> endpoint devolve 503, não 500
+- [ ] Explicar em 1 min (perguntas abaixo)
+- [ ] Minhas anotações
+- [ ] Commit + push
+- Dia ruim: 1 teste
+
 ## Conceitos-chave
 - Teste = função com nome `test_*` usando `assert` puro. Roda com `uv run pytest`.
 - **Fixtures** (`@pytest.fixture`): setup reaproveitável, injetado pelo nome do parâmetro.
@@ -12,11 +22,6 @@
 
 ## Ponte com PHP/Laravel
 - Fixture ~ `setUp()` + factories. `TestClient` ~ `$this->getJson()`. Mock ~ `Http::fake()` / `Mockery`.
-
-## Exercício
-1. `uv add --dev pytest`. `tests/test_balance.py`: conta conhecida devolve saldo conhecido; conta desconhecida levanta erro.
-2. `tests/test_classify.py`: LLM fake devolve JSON válido -> parse ok; JSON inválido -> erro claro.
-3. `tests/test_chat.py`: LLM dá timeout -> endpoint devolve 503, não 500.
 
 ## Responder em voz alta
 - Por que mockar o LLM em teste unitário?

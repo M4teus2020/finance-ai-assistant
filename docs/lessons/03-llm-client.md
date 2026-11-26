@@ -2,6 +2,15 @@
 
 **Objetivo:** uma função pequena e confiável que chama o LLM e aguenta falhas.
 
+## Checklist
+- [ ] `uv add openai pydantic-settings`; `Settings` com `nim_api_key`, `nim_base_url`, `model`; chave no `.env`
+- [ ] `llm/client.py`: `chat(messages) -> str` com timeout e retry com backoff (loop de retry escrito na mão antes de usar `tenacity`)
+- [ ] `POST /chat {"message": "..."}` devolve a resposta
+- [ ] Explicar em 1 min (perguntas abaixo)
+- [ ] Minhas anotações
+- [ ] Commit + push
+- Dia ruim: pedir ao Claude para explicar o código da lição anterior e escrever 3 linhas nas anotações
+
 ## Conceitos-chave
 - O **NVIDIA NIM** expõe uma API **compatível com a da OpenAI**: use o pacote `openai` com `base_url` + `api_key`. O mesmo código serve para vários provedores.
 - **Formato de chat:** lista de mensagens `{"role": "system" | "user" | "assistant", "content": ...}`. O modelo não guarda estado (stateless): você manda o histórico toda vez.
@@ -14,11 +23,6 @@
 ## Ponte com PHP/Laravel
 - `BaseSettings` ~ `config()` + `env()`.
 - Retry ~ `Http::retry(3, 100)`; timeout ~ `Http::timeout(10)`.
-
-## Exercício
-1. `uv add openai pydantic-settings`. `Settings` com `nim_api_key`, `nim_base_url`, `model`.
-2. `llm/client.py`: `chat(messages) -> str` com timeout e retry (tente escrever o loop de retry na mão antes de usar o `tenacity`).
-3. `POST /chat {"message": "..."}` devolve a resposta.
 
 ## Responder em voz alta
 - Em quais erros você faz retry e em quais não? Por quê?

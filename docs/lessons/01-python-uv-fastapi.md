@@ -2,6 +2,20 @@
 
 **Objetivo:** uma API rodando com `GET /health`, sabendo por que cada peça existe.
 
+## Checklist
+- [x] Repo público no GitHub + clone
+- [x] `uv init` + `uv add fastapi uvicorn`
+- [x] `main.py` com `app = FastAPI()` escrito por você
+- [x] `GET /health` devolvendo `{"status": "ok"}`
+- [x] Rodar `uv run uvicorn finance_ai_assistant.main:app --reload` e abrir `/health` e `/docs`
+- [x] Mover o health para `api/health.py` com `APIRouter` + `include_router`
+- [x] `api/__init__.py`
+- [ ] Explicar em 1 min: o que é o FastAPI e de onde sai o `/docs`
+- [ ] Minhas anotações (3 linhas)
+- [ ] Commit + push
+- Bônus: response model `{"status": str, "version": str}` no `/health` e ver como o `/docs` muda
+- Dia ruim (15 min): README de 3 linhas + commit
+
 ## Conceitos-chave
 - **uv:** gerenciador de pacotes + venv + versão do Python, numa ferramenta só e rápida. `pyproject.toml` (como o `composer.json`), `uv.lock` (como o `composer.lock`), `.venv/` (como o `vendor/`, mas guarda também o interpretador).
   - `uv add pkg`, `uv add --dev pkg`, `uv run <cmd>` (roda dentro do venv, sem precisar de `activate`), `uv sync`.
@@ -18,11 +32,6 @@
 | `php artisan serve` | `uv run uvicorn ... --reload` |
 | `Route::get('/health', fn() => [...])` | `@app.get("/health")` + função |
 | Scribe / L5-Swagger | `/docs` já vem pronto |
-
-## Exercício
-1. Criar `src/finance_ai_assistant/main.py` com o `app` e o `GET /health`.
-2. Rodar, abrir `/health` e `/docs`.
-3. Bônus: dar ao `/health` um response model `{"status": str, "version": str}` e ver como o `/docs` muda.
 
 ## Responder em voz alta (1 min cada)
 - Por que FastAPI e não Flask?
