@@ -1,7 +1,7 @@
 [project]
 name = "finance-ai-assistant"
 version = "0.1.0"
-description = "Add your description here"
+description = "Finance assistant on fake data, built to learn AI engineering"
 readme = "README.md"
 authors = [
     { name = "Mateus Felini", email = "mfelini7@gmail.com" }
