@@ -10,9 +10,9 @@
 - [x] Rodar `uv run uvicorn finance_ai_assistant.main:app --reload` e abrir `/health` e `/docs`
 - [x] Mover o health para `api/health.py` com `APIRouter` + `include_router`
 - [x] `api/__init__.py`
-- [ ] Explicar em 1 min: o que é o FastAPI e de onde sai o `/docs`
-- [ ] Minhas anotações (3 linhas)
-- [ ] Commit + push
+- [x] Explicar em 1 min: o que é o FastAPI e de onde sai o `/docs`
+- [x] Minhas anotações (3 linhas)
+- [x] Commit + push
 - Bônus: response model `{"status": str, "version": str}` no `/health` e ver como o `/docs` muda
 - Dia ruim (15 min): README de 3 linhas + commit
 
@@ -43,4 +43,4 @@
 - https://docs.astral.sh/uv/guides/projects/
 
 ## Minhas anotações
--
+- FastAPI é um framework Python para APIs. O diferencial é usar type hints: com eles o Pydantic valida a entrada e o framework gera o schema OpenAPI, que vira a documentação Swagger no /docs sem eu escrever nada. Ele é async, roda no uvicorn, e por isso é bom pra apps que esperam I/O, como chamadas de LLM. Comparando com o Laravel: rota é uma função com decorator, e o Pydantic faz o papel do Form Request.
