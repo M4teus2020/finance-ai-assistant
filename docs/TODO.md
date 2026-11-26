@@ -5,7 +5,6 @@ Pendências do **projeto** (código, repo, infra, README). O que é de estudo fi
 **Lição atual:** [01. Python, uv, FastAPI](lessons/01-python-uv-fastapi.md)
 
 ## Agora
-- [ ] Push do commit pendente (`feat: health endpoint with router`)
 - [ ] `pyproject.toml`: tirar o `[project.scripts]` (aponta para o `main()` que foi apagado)
 
 ## Fase 1 (até `v0.1`)
