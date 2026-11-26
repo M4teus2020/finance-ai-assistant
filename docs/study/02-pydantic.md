@@ -1,32 +1,32 @@
 # 02. Pydantic
 
-**Goal:** typed, validated domain models for `Account` and `Transaction`.
+**Objetivo:** models de domínio tipados e validados para `Account` e `Transaction`.
 
-## Key concepts
-- `BaseModel`: a class with typed fields that **validates and converts** input (`"10.50"` becomes `Decimal("10.50")`).
-- **Money is `Decimal`, never `float`** (`0.1 + 0.2 != 0.3`). Same rule as `decimal` columns in MySQL.
+## Conceitos-chave
+- `BaseModel`: classe com campos tipados que **valida e converte** a entrada (`"10.50"` vira `Decimal("10.50")`).
+- **Dinheiro é `Decimal`, nunca `float`** (`0.1 + 0.2 != 0.3`). Mesma regra da coluna `decimal` no MySQL.
 - `Field(gt=0, max_length=...)`, `Literal["credit", "debit"]`, `date`, `UUID`, `Optional` / `X | None`.
-- `model_validate(dict)`, `model_dump()`, `model_dump_json()`, `model_json_schema()` (this schema is what you give the LLM later).
-- `@field_validator` / `@model_validator` for custom rules.
-- In FastAPI, a model as parameter = request body validation; as `response_model` = output filter. Invalid input returns 422 automatically.
+- `model_validate(dict)`, `model_dump()`, `model_dump_json()`, `model_json_schema()` (esse schema é o que você vai passar para o LLM depois).
+- `@field_validator` / `@model_validator` para regras próprias.
+- No FastAPI, model como parâmetro = validação do body; como `response_model` = filtro da saída. Entrada inválida devolve 422 sozinho.
 
-## PHP/Laravel bridge
-- Pydantic model ~ Form Request rules + Eloquent `$casts` + API Resource, in one class.
-- 422 with error list ~ Laravel validation exception.
+## Ponte com PHP/Laravel
+- Model Pydantic ~ regras do Form Request + `$casts` do Eloquent + API Resource, numa classe só.
+- 422 com lista de erros ~ a validation exception do Laravel.
 
-## Exercise
-1. `Account(id, name, balance: Decimal)` and `Transaction(id, account_id, date, description, amount: Decimal, type: Literal[...], category: str | None)`.
-2. Script with Faker: 200 transactions, save to `data/transactions.json`.
-3. `GET /transactions?start=2026-01-01&end=2026-01-31`, query params typed as `date`.
+## Exercício
+1. `Account(id, name, balance: Decimal)` e `Transaction(id, account_id, date, description, amount: Decimal, type: Literal[...], category: str | None)`.
+2. Script com Faker: 200 transações, salvar em `data/transactions.json`.
+3. `GET /transactions?start=2026-01-01&end=2026-01-31`, com os query params tipados como `date`.
 
-## Answer out loud
-- Why `Decimal` and not `float` for money?
-- What happens when the client sends `amount: "abc"`?
-- What is `model_json_schema()` useful for in an LLM app?
+## Responder em voz alta
+- Por que `Decimal` e não `float` para dinheiro?
+- O que acontece quando o cliente manda `amount: "abc"`?
+- Para que serve o `model_json_schema()` num app com LLM?
 
 ## Links
 - https://docs.pydantic.dev/latest/concepts/models/
-- https://fastapi.tiangolo.com/tutorial/query-params/
+- https://fastapi.tiangolo.com/pt/tutorial/query-params/
 
-## My notes
+## Minhas anotações
 -

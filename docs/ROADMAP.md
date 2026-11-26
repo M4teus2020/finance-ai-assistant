@@ -1,31 +1,31 @@
 # Roadmap
 
-One project, four phases of 3 weeks. Each phase ends with a git tag and something visible (GitHub + LinkedIn).
+Um projeto, quatro fases de 3 semanas. Cada fase termina com uma tag no git e algo visível (GitHub + LinkedIn).
 
-**Pace:** 45 min per weekday. Bad day: 15 min (1 test, 1 README line, or ask Claude to explain yesterday's code) + 1 commit. Weekends free. 4 weeks without a miss: go to 1 h.
+**Ritmo:** 45 min por dia útil. Dia ruim: 15 min (1 teste, 1 linha do README ou pedir ao Claude para explicar o código de ontem) + 1 commit. Fim de semana livre. 4 semanas sem furo: sobe para 1 h.
 
-| Phase | Dates | Learn | Deliverable |
+| Fase | Datas | Aprende | Entregável |
 |---|---|---|---|
-| 1. Python + LLM | 2026-11-26 to 2026-12-18 | FastAPI, Pydantic, LLM client (timeout, retry), structured outputs, tool calling, pytest | `v0.1`: API that classifies transactions and answers "what's my balance?" via a tool |
-| Break | 2026-12-19 to 2027-01-04 | 15 min sessions, only if possible | nothing |
-| 2. RAG | 2027-01-05 to 2027-01-23 | Ingestion, chunking, embeddings, pgvector, hybrid search, reranking, citing sources | `v0.2`: `POST /ask` answers about fake docs citing the source. 1st LinkedIn post |
-| 3. Agents + MCP | 2027-01-26 to 2027-02-13 | LangGraph (state, nodes, conditional edges), human-in-the-loop, MCP server in Python, loop limits | `v0.3`: agent that investigates a suspicious transaction and asks before acting. 2nd post |
-| 4. Eval + security + deploy | 2027-02-16 to 2027-03-06 | Eval dataset, RAG/agent metrics, LangSmith, prompt injection tests, backend authz, Docker on AWS, CI | `v1.0` live demo + metrics table in README. 3rd post |
+| 1. Python + LLM | 26/11/2026 a 18/12/2026 | FastAPI, Pydantic, cliente de LLM (timeout, retry), structured outputs, tool calling, pytest | `v0.1`: API que classifica transações e responde "qual meu saldo?" chamando uma tool |
+| Pausa | 19/12/2026 a 04/01/2027 | Sessões de 15 min, só se der | nada |
+| 2. RAG | 05/01/2027 a 23/01/2027 | Ingestão, chunking, embeddings, pgvector, busca híbrida, reranking, citar a fonte | `v0.2`: `POST /ask` responde sobre documentos fictícios citando a fonte. 1º post no LinkedIn |
+| 3. Agentes + MCP | 26/01/2027 a 13/02/2027 | LangGraph (estado, nós, arestas condicionais), human-in-the-loop, servidor MCP em Python, limite de loops | `v0.3`: agente que investiga uma transação suspeita e pede confirmação antes de agir. 2º post |
+| 4. Avaliação + segurança + deploy | 16/02/2027 a 06/03/2027 | Dataset de avaliação, métricas de RAG e agente, LangSmith, testes de prompt injection, autorização no backend, Docker na AWS, CI | `v1.0` no ar + tabela de métricas no README. 3º post |
 
-## Phase 1 detail
+## Fase 1 em detalhe
 
-- **Week 1:** health endpoint, `Account` / `Transaction` models + fake data, LLM client, structured output, first tool, tests, README.
-- **Week 2:** streaming response, tool permissions (which account can see what), more tools (`list_transactions`, `get_spending_by_category`), module layout (`api/`, `llm/`, `tools/`, `models/`).
-- **Week 3:** error paths and tests with mocked LLM, config via `pydantic-settings`, README with curl examples, tag `v0.1`.
+- **Semana 1:** endpoint de health, models `Account` / `Transaction` + dados fake, cliente de LLM, structured output, primeira tool, testes, README.
+- **Semana 2:** resposta em streaming, permissões da tool (quem pode ver qual conta), mais tools (`list_transactions`, `get_spending_by_category`), organizar módulos (`api/`, `llm/`, `tools/`, `models/`).
+- **Semana 3:** caminhos de erro e testes com LLM mockado, config com `pydantic-settings`, README com exemplos de curl, tag `v0.1`.
 
-## "Know how to talk about" (1 topic per phase, 30 min with Claude)
+## "Saber falar" (1 tema por fase, 30 min com o Claude)
 
-- Phase 1: agents vs deterministic workflows (cost, autonomy, reliability)
-- Phase 2: RAG vs fine-tuning vs training
-- Phase 3: model routing, semantic cache, smaller models
-- Phase 4: Amazon Bedrock and managed inference
+- Fase 1: agentes vs workflows determinísticos (custo, autonomia, confiabilidade)
+- Fase 2: RAG vs fine-tuning vs treinamento
+- Fase 3: model routing, cache semântico, modelos menores
+- Fase 4: Amazon Bedrock e inferência gerenciada
 
-## Rules
+## Regras
 
-- Review this roadmap at the end of each phase, never in the middle.
-- Missed a whole week? Cut phase scope, never the habit. Do not restart from zero.
+- Revisar este roadmap no fim de cada fase, nunca no meio.
+- Furou uma semana inteira? Corta escopo da fase, nunca o hábito. Não recomeça do zero.

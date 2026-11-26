@@ -1,34 +1,34 @@
-# 03. LLM client
+# 03. Cliente de LLM
 
-**Goal:** a small, reliable function that calls an LLM and survives failures.
+**Objetivo:** uma função pequena e confiável que chama o LLM e aguenta falhas.
 
-## Key concepts
-- **NVIDIA NIM** exposes an **OpenAI-compatible** API: use the `openai` package with `base_url` + `api_key`. Same code works for many providers.
-- **Chat format:** list of messages `{"role": "system" | "user" | "assistant", "content": ...}`. The model is stateless: you send the history every time.
-- **Secrets:** key in `.env`, loaded with `pydantic-settings` (`BaseSettings`). `.env` is in `.gitignore`.
-- **Timeouts:** always set one. A hung call blocks your worker.
-- **Retry with exponential backoff + jitter:** only on transient errors (429 rate limit, 5xx, timeout). Never retry 400/401.
-- **Tokens:** cost and context limit. Log `usage` from the response.
-- **Streaming:** tokens arrive as they are generated (week 2).
+## Conceitos-chave
+- O **NVIDIA NIM** expõe uma API **compatível com a da OpenAI**: use o pacote `openai` com `base_url` + `api_key`. O mesmo código serve para vários provedores.
+- **Formato de chat:** lista de mensagens `{"role": "system" | "user" | "assistant", "content": ...}`. O modelo não guarda estado (stateless): você manda o histórico toda vez.
+- **Segredos:** chave no `.env`, carregada com `pydantic-settings` (`BaseSettings`). O `.env` está no `.gitignore`.
+- **Timeout:** sempre definir. Chamada travada segura o worker.
+- **Retry com backoff exponencial + jitter:** só em erro transitório (429 rate limit, 5xx, timeout). Nunca repetir 400/401.
+- **Tokens:** custo e limite de contexto. Logar o `usage` da resposta.
+- **Streaming:** os tokens chegam conforme são gerados (semana 2).
 
-## PHP/Laravel bridge
+## Ponte com PHP/Laravel
 - `BaseSettings` ~ `config()` + `env()`.
 - Retry ~ `Http::retry(3, 100)`; timeout ~ `Http::timeout(10)`.
 
-## Exercise
-1. `uv add openai pydantic-settings`. `Settings` with `nim_api_key`, `nim_base_url`, `model`.
-2. `llm/client.py`: `chat(messages) -> str` with timeout and retry (try writing the retry loop yourself before using `tenacity`).
-3. `POST /chat {"message": "..."}` returns the answer.
+## Exercício
+1. `uv add openai pydantic-settings`. `Settings` com `nim_api_key`, `nim_base_url`, `model`.
+2. `llm/client.py`: `chat(messages) -> str` com timeout e retry (tente escrever o loop de retry na mão antes de usar o `tenacity`).
+3. `POST /chat {"message": "..."}` devolve a resposta.
 
-## Answer out loud
-- Which errors do you retry and which you don't? Why?
-- Why is the model "stateless" and what does that mean for chat history?
-- Where does the API key live and how do you guarantee it never hits git?
+## Responder em voz alta
+- Em quais erros você faz retry e em quais não? Por quê?
+- Por que o modelo é "stateless" e o que isso muda no histórico do chat?
+- Onde fica a chave da API e como você garante que ela nunca vai para o git?
 
 ## Links
-- https://build.nvidia.com (models + key)
+- https://build.nvidia.com (modelos + chave)
 - https://github.com/openai/openai-python
 - https://docs.pydantic.dev/latest/concepts/pydantic_settings/
 
-## My notes
+## Minhas anotações
 -

@@ -1,31 +1,31 @@
 # 06. pytest
 
-**Goal:** tests for the tool, the structured output parser and an LLM failure, without calling the real LLM.
+**Objetivo:** testes para a tool, para o parser do structured output e para uma falha do LLM, sem chamar o LLM de verdade.
 
-## Key concepts
-- Test = function named `test_*` with plain `assert`. Run with `uv run pytest`.
-- **Fixtures** (`@pytest.fixture`): reusable setup, injected by parameter name.
-- `@pytest.mark.parametrize`: same test, many inputs.
-- **FastAPI `TestClient`:** calls your endpoints in-process.
-- **Mock the LLM** (`monkeypatch` or `unittest.mock`): tests must be fast, free and deterministic. Real-LLM checks are **evals** (phase 4), not unit tests.
-- `app.dependency_overrides` swaps a dependency (like the LLM client) in tests.
+## Conceitos-chave
+- Teste = função com nome `test_*` usando `assert` puro. Roda com `uv run pytest`.
+- **Fixtures** (`@pytest.fixture`): setup reaproveitável, injetado pelo nome do parâmetro.
+- `@pytest.mark.parametrize`: o mesmo teste com várias entradas.
+- **`TestClient` do FastAPI:** chama seus endpoints sem subir servidor.
+- **Mockar o LLM** (`monkeypatch` ou `unittest.mock`): teste tem que ser rápido, grátis e determinístico. Checagem com o LLM real é **eval** (fase 4), não teste unitário.
+- `app.dependency_overrides` troca uma dependência (como o cliente de LLM) nos testes.
 
-## PHP/Laravel bridge
+## Ponte com PHP/Laravel
 - Fixture ~ `setUp()` + factories. `TestClient` ~ `$this->getJson()`. Mock ~ `Http::fake()` / `Mockery`.
 
-## Exercise
-1. `uv add --dev pytest`. `tests/test_balance.py`: known account returns known balance; unknown account raises.
-2. `tests/test_classify.py`: fake LLM returns valid JSON -> parsed; invalid JSON -> clear error.
-3. `tests/test_chat.py`: LLM times out -> endpoint returns 503, not 500.
+## Exercício
+1. `uv add --dev pytest`. `tests/test_balance.py`: conta conhecida devolve saldo conhecido; conta desconhecida levanta erro.
+2. `tests/test_classify.py`: LLM fake devolve JSON válido -> parse ok; JSON inválido -> erro claro.
+3. `tests/test_chat.py`: LLM dá timeout -> endpoint devolve 503, não 500.
 
-## Answer out loud
-- Why mock the LLM in unit tests?
-- Difference between a test and an eval?
-- What is a fixture?
+## Responder em voz alta
+- Por que mockar o LLM em teste unitário?
+- Qual a diferença entre teste e eval?
+- O que é uma fixture?
 
 ## Links
 - https://docs.pytest.org/en/stable/getting-started.html
-- https://fastapi.tiangolo.com/tutorial/testing/
+- https://fastapi.tiangolo.com/pt/tutorial/testing/
 
-## My notes
+## Minhas anotações
 -

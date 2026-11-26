@@ -1,15 +1,15 @@
-# Study guides
+# Guias de estudo
 
-One guide per topic, in the order of `../TODO.md`. Each one has: goal, key concepts, PHP/Laravel bridge, exercise, questions you must answer out loud, links, and **My notes** (you write it, in your words, at the end of the session).
+Um guia por tema, na ordem do `../TODO.md`. Cada um tem: objetivo, conceitos-chave, ponte com PHP/Laravel, exercício, perguntas para responder em voz alta, links e **Minhas anotações** (você escreve, com suas palavras, no fim da sessão).
 
-| # | Topic | Phase |
+| # | Tema | Fase |
 |---|---|---|
-| 00 | [How to study](00-how-to-study.md) | all |
+| 00 | [Como estudar](00-how-to-study.md) | todas |
 | 01 | [Python, uv, FastAPI](01-python-uv-fastapi.md) | 1 |
 | 02 | [Pydantic](02-pydantic.md) | 1 |
-| 03 | [LLM client](03-llm-client.md) | 1 |
+| 03 | [Cliente de LLM](03-llm-client.md) | 1 |
 | 04 | [Structured outputs](04-structured-outputs.md) | 1 |
 | 05 | [Tool calling](05-tool-calling.md) | 1 |
 | 06 | [pytest](06-pytest.md) | 1 |
 
-Phases 2 to 4 get their guides when the phase starts (RAG, LangGraph, MCP, evals, deploy).
+As fases 2 a 4 ganham guias quando começarem (RAG, LangGraph, MCP, avaliação, deploy).

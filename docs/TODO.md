@@ -1,56 +1,56 @@
 # TODO
 
-Start every session here. One session = one block. Tick, commit, push.
+Toda sessão começa aqui. Uma sessão = um bloco. Marca, commit, push.
 
-## Phase 1, week 1
+## Fase 1, semana 1
 
-### Thu 2026-11-26: first API
-- [x] Public repo on GitHub + clone
+### Qui 26/11: primeira API
+- [x] Repo público no GitHub + clone
 - [x] `uv init` + `uv add fastapi uvicorn`
-- [ ] Write `src/finance_ai_assistant/main.py` yourself: `app = FastAPI()` + `GET /health` returning `{"status": "ok"}`
-- [ ] Run: `uv run uvicorn finance_ai_assistant.main:app --reload`
-- [ ] Open http://localhost:8000/health and http://localhost:8000/docs
-- [ ] Explain in 1 min: what FastAPI is and where `/docs` comes from
+- [ ] Escrever você mesmo `src/finance_ai_assistant/main.py`: `app = FastAPI()` + `GET /health` devolvendo `{"status": "ok"}`
+- [ ] Rodar: `uv run uvicorn finance_ai_assistant.main:app --reload`
+- [ ] Abrir http://localhost:8000/health e http://localhost:8000/docs
+- [ ] Explicar em 1 min: o que é o FastAPI e de onde sai o `/docs`
 - [ ] Commit `feat: health endpoint` + push
-- Study: `docs/study/01-python-uv-fastapi.md`
-- Bad day (15 min): README with 3 lines + commit
+- Estudo: `docs/study/01-python-uv-fastapi.md`
+- Dia ruim (15 min): README de 3 linhas + commit
 
-### Fri 2026-11-27: models + fake data
-- [ ] Pydantic models `Account` and `Transaction` (`Decimal` for money, `date`, `Literal` for type)
-- [ ] `uv add --dev faker`, script that generates 200 fake transactions into `data/transactions.json`
-- [ ] `GET /transactions?start=&end=` with date filter
-- Study: `docs/study/02-pydantic.md`
-- Bad day: only `Transaction` model + commit
+### Sex 27/11: models + dados fake
+- [ ] Models Pydantic `Account` e `Transaction` (`Decimal` para dinheiro, `date`, `Literal` para o tipo)
+- [ ] `uv add --dev faker`, script que gera 200 transações fake em `data/transactions.json`
+- [ ] `GET /transactions?start=&end=` com filtro por data
+- Estudo: `docs/study/02-pydantic.md`
+- Dia ruim: só o model `Transaction` + commit
 
-### Mon 2026-11-30: LLM client
-- [ ] NIM key in `.env`, read it with `pydantic-settings`
-- [ ] Client with timeout, retry with backoff, error handling
-- [ ] `POST /chat` that forwards one message
-- Study: `docs/study/03-llm-client.md`
-- Bad day: ask Claude to explain Friday's code, write 3 lines in "My notes"
+### Seg 30/11: cliente de LLM
+- [ ] Chave do NIM no `.env`, lida com `pydantic-settings`
+- [ ] Cliente com timeout, retry com backoff, tratamento de erro
+- [ ] `POST /chat` que repassa uma mensagem
+- Estudo: `docs/study/03-llm-client.md`
+- Dia ruim: pedir ao Claude para explicar o código de sexta, escrever 3 linhas em "Minhas anotações"
 
-### Tue 2026-12-01: structured output
-- [ ] LLM classifies a transaction into a category, JSON validated by Pydantic
-- Study: `docs/study/04-structured-outputs.md`
-- Bad day: 1 test for `Transaction`
+### Ter 01/12: structured output
+- [ ] LLM classifica uma transação em categoria, JSON validado pelo Pydantic
+- Estudo: `docs/study/04-structured-outputs.md`
+- Dia ruim: 1 teste do `Transaction`
 
-### Wed 2026-12-02: first tool
-- [ ] Tool `get_balance(account_id)`, the LLM decides when to call it
-- Study: `docs/study/05-tool-calling.md`
-- Bad day: tool signature + docstring
+### Qua 02/12: primeira tool
+- [ ] Tool `get_balance(account_id)`, o LLM decide quando chamar
+- Estudo: `docs/study/05-tool-calling.md`
+- Dia ruim: assinatura da tool + docstring
 
-### Thu 2026-12-03: tests
-- [ ] pytest: the tool, the structured output parser, a simulated LLM failure (mock)
-- Study: `docs/study/06-pytest.md`
-- Bad day: 1 test
+### Qui 03/12: testes
+- [ ] pytest: a tool, o parser do structured output, uma falha do LLM simulada (mock)
+- Estudo: `docs/study/06-pytest.md`
+- Dia ruim: 1 teste
 
-### Fri 2026-12-04: README
-- [ ] README in English: what it is, how to run, `curl` example
-- [ ] Screenshot of the contributions graph
-- Bad day: only "How to run"
+### Sex 04/12: README
+- [ ] README em inglês: o que é, como rodar, exemplo de `curl`
+- [ ] Print do gráfico de contribuições
+- Dia ruim: só o "How to run"
 
-## Phase 1, weeks 2 and 3
-See `ROADMAP.md`. Break into sessions here on Friday 2026-12-04.
+## Fase 1, semanas 2 e 3
+Ver `ROADMAP.md`. Quebrar em sessões aqui na sexta 04/12.
 
-## Backlog (ideas, not now)
-- (empty)
+## Backlog (ideias, não agora)
+- (vazio)

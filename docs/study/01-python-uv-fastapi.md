@@ -1,37 +1,37 @@
 # 01. Python, uv, FastAPI
 
-**Goal:** a running API with `GET /health`, and knowing why each piece exists.
+**Objetivo:** uma API rodando com `GET /health`, sabendo por que cada peça existe.
 
-## Key concepts
-- **uv:** package + venv + Python version manager, in one fast tool. `pyproject.toml` (like `composer.json`), `uv.lock` (like `composer.lock`), `.venv/` (like `vendor/`, but also holds the interpreter).
-  - `uv add pkg`, `uv add --dev pkg`, `uv run <cmd>` (runs inside the venv, no `activate` needed), `uv sync`.
-- **src layout:** code in `src/finance_ai_assistant/`. Import path is `finance_ai_assistant.main`, so uvicorn runs `finance_ai_assistant.main:app`.
-- **ASGI:** the async standard for Python web servers. **uvicorn** is the server (like php-fpm), **FastAPI** is the framework (like Laravel).
-- **FastAPI:** routes are decorated functions (`@app.get("/health")`). Return a dict, it becomes JSON.
-- **`/docs`:** Swagger UI generated from your type hints and the OpenAPI schema (`/openapi.json`). No annotations, no docs.
-- **async def vs def:** use `async def` when you await I/O (HTTP, DB). Plain `def` runs in a thread pool. Both work.
+## Conceitos-chave
+- **uv:** gerenciador de pacotes + venv + versão do Python, numa ferramenta só e rápida. `pyproject.toml` (como o `composer.json`), `uv.lock` (como o `composer.lock`), `.venv/` (como o `vendor/`, mas guarda também o interpretador).
+  - `uv add pkg`, `uv add --dev pkg`, `uv run <cmd>` (roda dentro do venv, sem precisar de `activate`), `uv sync`.
+- **src layout:** o código fica em `src/finance_ai_assistant/`. O caminho de import é `finance_ai_assistant.main`, então o uvicorn roda `finance_ai_assistant.main:app`.
+- **ASGI:** o padrão assíncrono dos servidores web em Python. O **uvicorn** é o servidor (como o php-fpm), o **FastAPI** é o framework (como o Laravel).
+- **FastAPI:** rota é uma função com decorator (`@app.get("/health")`). Devolveu um dict, vira JSON.
+- **`/docs`:** Swagger UI gerado a partir dos type hints e do schema OpenAPI (`/openapi.json`). Sem anotação de tipo, sem doc.
+- **async def vs def:** use `async def` quando fizer `await` de I/O (HTTP, banco). `def` comum roda num pool de threads. Os dois funcionam.
 
-## PHP/Laravel bridge
-| Laravel | Here |
+## Ponte com PHP/Laravel
+| Laravel | Aqui |
 |---|---|
 | `composer require` | `uv add` |
 | `php artisan serve` | `uv run uvicorn ... --reload` |
-| `Route::get('/health', fn() => [...])` | `@app.get("/health")` + function |
-| Scribe / L5-Swagger | built-in `/docs` |
+| `Route::get('/health', fn() => [...])` | `@app.get("/health")` + função |
+| Scribe / L5-Swagger | `/docs` já vem pronto |
 
-## Exercise
-1. Create `src/finance_ai_assistant/main.py` with `app` and `GET /health`.
-2. Run it, open `/health` and `/docs`.
-3. Bonus: add `GET /health` response model `{"status": str, "version": str}`, see how `/docs` changes.
+## Exercício
+1. Criar `src/finance_ai_assistant/main.py` com o `app` e o `GET /health`.
+2. Rodar, abrir `/health` e `/docs`.
+3. Bônus: dar ao `/health` um response model `{"status": str, "version": str}` e ver como o `/docs` muda.
 
-## Answer out loud (1 min each)
-- Why FastAPI and not Flask?
-- What does uv do differently from pip?
-- What is `/docs` and where does it come from?
+## Responder em voz alta (1 min cada)
+- Por que FastAPI e não Flask?
+- O que o uv faz de diferente do pip?
+- O que é o `/docs` e de onde ele sai?
 
 ## Links
-- https://fastapi.tiangolo.com/tutorial/first-steps/
+- https://fastapi.tiangolo.com/pt/tutorial/first-steps/
 - https://docs.astral.sh/uv/guides/projects/
 
-## My notes
+## Minhas anotações
 -

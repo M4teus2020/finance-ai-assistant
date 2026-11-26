@@ -1,30 +1,30 @@
 # 04. Structured outputs
 
-**Goal:** the LLM returns JSON that your code can trust, validated by Pydantic.
+**Objetivo:** o LLM devolve um JSON em que o seu código pode confiar, validado pelo Pydantic.
 
-## Key concepts
-- Free text is useless for code. You want `{"category": "groceries", "confidence": 0.9}`.
-- Three levels, weakest to strongest:
-  1. Ask for JSON in the prompt + parse (breaks often).
-  2. **JSON mode** (`response_format={"type": "json_object"}`): valid JSON, any shape.
-  3. **JSON Schema** (`response_format` with a schema, from `Model.model_json_schema()`): valid JSON in your shape. Check if the chosen NIM model supports it.
-- **Always validate** with `Model.model_validate_json(text)`. On failure: retry once with the error in the prompt, then fail clearly.
-- Constrain outputs: `Literal` for categories, so the model can't invent one.
+## Conceitos-chave
+- Texto livre não serve para código. Você quer `{"category": "groceries", "confidence": 0.9}`.
+- Três níveis, do mais fraco ao mais forte:
+  1. Pedir JSON no prompt + fazer parse (quebra com frequência).
+  2. **JSON mode** (`response_format={"type": "json_object"}`): JSON válido, formato qualquer.
+  3. **JSON Schema** (`response_format` com schema, vindo do `Model.model_json_schema()`): JSON válido no SEU formato. Conferir se o modelo escolhido no NIM suporta.
+- **Sempre validar** com `Model.model_validate_json(text)`. Se falhar: tentar de novo uma vez mandando o erro no prompt, depois falhar com erro claro.
+- Restringir a saída: `Literal` nas categorias, para o modelo não inventar uma.
 
-## Exercise
+## Exercício
 1. `TransactionCategory(category: Literal[...], confidence: float)`.
 2. `classify(transaction) -> TransactionCategory`.
 3. `POST /transactions/{id}/classify`.
-4. Try a weird description ("pix pro joão") and see what happens.
+4. Testar uma descrição estranha ("pix pro joão") e ver o que acontece.
 
-## Answer out loud
-- Difference between JSON mode and JSON Schema mode?
-- What do you do when the model returns invalid JSON?
-- Why `Literal` for categories?
+## Responder em voz alta
+- Qual a diferença entre JSON mode e JSON Schema?
+- O que você faz quando o modelo devolve JSON inválido?
+- Por que `Literal` nas categorias?
 
 ## Links
 - https://platform.openai.com/docs/guides/structured-outputs
 - https://docs.api.nvidia.com/nim/docs/structured-generation
 
-## My notes
+## Minhas anotações
 -

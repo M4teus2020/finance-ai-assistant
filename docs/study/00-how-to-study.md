@@ -1,13 +1,13 @@
-# 00. How to study
+# 00. Como estudar
 
-- **Build, don't watch.** Course or video only when stuck, as reference.
-- **Try first, then ask.** Claude gives hints before code. Ask for the full answer only after a real attempt.
-- **1-minute rule.** If you can't explain it out loud in 1 minute, you don't own it yet. Ask Claude to quiz you.
-- **Read the error.** Before pasting a traceback to Claude, read the last line and guess the cause. Then ask.
-- **Small sessions.** 45 min, bad day 15 min. One commit per session keeps the streak.
-- **Write "My notes".** 3 to 5 lines in your words at the end. This is what you review before an interview.
+- **Construir, não assistir.** Curso ou vídeo só quando travar, como consulta.
+- **Tentar primeiro, depois perguntar.** O Claude dá dica antes de código. Peça a resposta completa só depois de uma tentativa de verdade.
+- **Regra do 1 minuto.** Se não consegue explicar em voz alta em 1 minuto, ainda não é seu. Peça para o Claude te sabatinar.
+- **Ler o erro.** Antes de colar um traceback no Claude, leia a última linha e chute a causa. Depois pergunte.
+- **Sessões pequenas.** 45 min, dia ruim 15 min. Um commit por sessão mantém a sequência.
+- **Escrever "Minhas anotações".** 3 a 5 linhas com suas palavras no fim. É o que você revisa antes de entrevista.
 
-## Useful prompts for Claude
+## Prompts úteis para o Claude
 - "Me explica isso como se eu viesse do Laravel."
 - "Me dá só uma dica, sem código."
 - "Revisa meu código: o que tá errado e o que um sênior faria diferente?"
